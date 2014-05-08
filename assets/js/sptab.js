@@ -93,10 +93,10 @@ if ( typeof Object.create !== 'function' ) {
 					this.current 	= $(items)[ this.curIndex ]
 					this.previous 	= $(items)[ this.prevIndex ]
 					
-					handlers.removeClass('active')
-					this.previous.removeClass('active')
-					this.current.addClass('active')
-					$(this).addClass('active')
+					handlers.removeClass('active');
+					$(this.previous).removeClass('active');
+					$(this.current).addClass('active');
+					$(this).addClass('active');
 
 					//Animation fade
 					if( self.options.animation == 'fade' )
