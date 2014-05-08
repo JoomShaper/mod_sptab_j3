@@ -57,12 +57,17 @@ $document = JFactory::getDocument();
 
 JHtml::_('jquery.framework');
 
-$document->addScript(JURI::base(true) . '/modules/mod_sptab/assets/js/jquery.easing.1.3.min.js');//Load javascript
+if( !defined('_SP_EASING') )
+{
+	define('_SP_EASING', 1);
+	$document->addScript(JURI::base(true) . '/modules/mod_sptab/assets/js/jquery.easing.1.3.min.js');//Load javascript
+}
+
 $document->addScript(JURI::base(true) . '/modules/mod_sptab/assets/js/sptab.js');//Load javascript
 $document->addStylesheet(JURI::base(true) . '/modules/mod_sptab/assets/css/' . $style . '.css.php?id=' .$uniqid);//Load css
 
 $css = '';
-$css 		.= '#sptab' . $uniqid . ' .tabs_mask, #sptab' . $uniqid . ' ul.tabs_container li span {height:' . $height . 'px;line-height:' . $height . 'px;}';
+$css 		.= '#sptab' . $uniqid . ' .tabs_mask, #sptab' . $uniqid . ' ul.tabs_container li span {height:' . $height . 'px;line-height:' . $height . 'px; overflow: hidden;}';
 $css 	 	.= '#sptab' . $uniqid . ' .tab-padding {padding:' . $body_padding . '}';
 
 if ($style=='custom') {

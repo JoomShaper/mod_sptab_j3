@@ -101,8 +101,13 @@ if ( typeof Object.create !== 'function' ) {
 					//Animation fade
 					if( self.options.animation == 'fade' )
 					{
+						$(mask).animate({
+							height: $(this.current).outerHeight()
+						}, self.options.duration)
+
 						$( this.previous ).css('display', 'none')
 						$( this.current ).fadeIn( self.options.duration, self.options.transition, function(){
+							$(mask).removeAttr('style')
 							isSliding = false
 						})
 					}
