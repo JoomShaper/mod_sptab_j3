@@ -20,7 +20,10 @@ abstract class modspTabHelper {
 		
 		$items 						= array();
 		
-		for ($i=0;$i<count($mods);$i++) {
+		for ($i=0;$i<count($mods);$i++) 
+		{
+		    if (self::getModule($mods[$i]) !== null)
+		    {
 			if ( $ordering == 'ordering' )
 			{
 				$items[$i]['order'] = self::getModule($mods[$i])->ordering;
@@ -34,6 +37,7 @@ abstract class modspTabHelper {
 			{
 				$items[$i]['content'] 	= do_shortcode( $items[$i]['content'] );
 			}
+		    }
 		}
 
 		($ordering_direction=='ASC') ? asort ($items) : arsort ($items);//sorting
